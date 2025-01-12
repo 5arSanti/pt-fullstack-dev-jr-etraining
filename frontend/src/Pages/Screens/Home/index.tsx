@@ -44,6 +44,7 @@ const Home = () => {
                 <SectionTitle title="Consultas" subTitle="Seccion de"/>
 
                 <SubTitle>Numero de cursos por modalidad</SubTitle>
+                <TextCard textAlign="start">Aca se pueden observar el numero de cursos por modalidad</TextCard>
                 <TableContainer
                     data={Array.isArray(coursesByModality) ? coursesByModality : []}
                     onDelete={() => {}}
@@ -51,6 +52,7 @@ const Home = () => {
                 />
 
                 <SubTitle>Estudiantes por estado de matricula en cada curso</SubTitle>
+                <TextCard textAlign="start">Aca se pueden observar el numero total de <strong>estudiantes</strong> por estado de matricula y ordenados por curso</TextCard>
                 <TableContainer
                     data={Array.isArray(studentsByStatus) ? studentsByStatus : []}
                     onDelete={() => {}}

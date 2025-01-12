@@ -34,7 +34,6 @@ router.get("/students", async (request, response) => {
 			WHERE r.name = 'Estudiante'
 			GROUP BY c.name, i.name
 			ORDER BY c.name, i.name;
-
 		`)
 
 		return response.json({ studentsByStatus: studentsByStatus });
