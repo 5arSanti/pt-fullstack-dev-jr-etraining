@@ -6,6 +6,13 @@ const versionRouter = require("./version/index.js");
 
 const modalitiesRouter = require("./modalities/index.js");
 
+const rolesRouter = require("./roles/index.js");
+
+const coursesRouter = require("./courses/index.js");
+
+const usersRouter = require("./users/index.js");
+
+
 
 const routerApi = (app) => {
 	const router = express.Router();
@@ -15,6 +22,12 @@ const routerApi = (app) => {
 	router.use("/version", versionRouter);
 
 	router.use("/modalities", modalitiesRouter);
+
+	router.use("/roles", rolesRouter);
+
+	router.use("/courses", coursesRouter);
+
+	router.use("/users", usersRouter);
 
 }
 

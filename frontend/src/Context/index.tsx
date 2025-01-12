@@ -98,7 +98,6 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         ];
         fetchData(endpoints);
     }, []);
-    console.log(responseData)
 
 
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);

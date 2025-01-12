@@ -6,6 +6,7 @@ import { WrapperContainer2 } from "../../WrapperContainers";
 import { handlePostData } from "../../../../utils/handleData/handlePostData";
 import { handleInputChange } from "../../../../utils/handleInputChange";
 import { GridContainer } from "../../GridContainer";
+import { ButtonCard } from "../../ButtonCard";
 
 interface CoursesFormProps {
     modalities: any[];
@@ -17,7 +18,8 @@ const CoursesForm: FC<CoursesFormProps> = ({modalities}) => {
     const [ values, setValues ] = React.useState({
         name: "",
         modality_id: null,
-        duration: null
+        duration: null,
+        quota: null
     })
 
     const handleSubmit = async (event: FormEvent) => {
@@ -29,24 +31,26 @@ const CoursesForm: FC<CoursesFormProps> = ({modalities}) => {
     }
 
     return(
-        <WrapperContainer2>
-            <SubTitle>Ingrese los datos del nuevo curso</SubTitle>
-            <form onSubmit={handleSubmit}>
-                <GridContainer className="grid-1-1">
+        <form onSubmit={handleSubmit} style={{width: "100%"}}>
+            <WrapperContainer2 gap={30}>
+                <SubTitle>Ingrese los datos del nuevo curso</SubTitle>
+                <GridContainer className="grid-1-1" padding={0}>
                     <InputCard
                         id="course-name"
                         label="Nombre del curso"
                         onChange={(event: InputEvent) => {handleInputChange("name", event, setValues)}}
                         defaultValue={values?.name}
+                        placeholder="Ingrese el nombre"
                     />
 
                     <OptionInputCard
                         id="course-modality"
                         label="Modalidad"
                         array={modalities}
-                        onChange={(event: InputEvent) => {handleInputChange("modality", event, setValues)}}
+                        onChange={(event: InputEvent) => {handleInputChange("modality_id", event, setValues)}}
                         defaultValue={values?.modality_id}
                         none={true}
+                        placeholder="Seleccione una modalidad"
                     />
 
                     <InputCard
@@ -54,17 +58,26 @@ const CoursesForm: FC<CoursesFormProps> = ({modalities}) => {
                         label="Duracion del curso en horas"
                         onChange={(event: InputEvent) => {handleInputChange("duration", event, setValues)}}
                         defaultValue={values?.duration}
+                        placeholder="Ingrese la duracion"
                     />
                     <InputCard
                         id="quota"
                         label="Cuota del curso"
-                        onChange={(event: InputEvent) => {handleInputChange("duration", event, setValues)}}
-                        defaultValue={values?.duration}
+                        onChange={(event: InputEvent) => {handleInputChange("quota", event, setValues)}}
+                        defaultValue={values?.quota}
+                        placeholder="Ingrese la cuota"
                     />
-                    
+
                 </GridContainer>
-            </form>
-        </WrapperContainer2>
+                    <ButtonCard
+                        type="submit"
+                        onClick={() => {}}
+                        title="Crear curso"
+                    >
+                        Crear curso
+                    </ButtonCard>
+            </WrapperContainer2>
+        </form>
     );
 }
 

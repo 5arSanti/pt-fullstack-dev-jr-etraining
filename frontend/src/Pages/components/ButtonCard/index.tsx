@@ -3,7 +3,7 @@ import "./styles.css";
 interface ButtonCardProps {
     children: React.ReactNode;
     className?: string;
-    title?: string;
+    title: string;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
     type?: "button" | "submit" | "reset";
     padding?: number;

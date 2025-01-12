@@ -1,20 +1,20 @@
 import React from "react";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
-import { CoursesForm } from "../../components/ScreenCourses/CoursesForm";
 import { SectionWrapper } from "../../components/SectionWrapper";
 import { StyledSection } from "../../components/StyledSection";
 import { TextCard } from "../../components/TextComponents";
 import { Title } from "../../components/Title";
-import { IoBook } from "react-icons/io5";
+import { FaUsersCog } from "react-icons/fa";
 import { AppContext } from "../../../Context";
+import { UsersForm } from "../../components/ScreenUsers/UsersForm";
 
-const CoursesScreen = () => {
+const UsersScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext)
 
     React.useEffect(() => {
         const endpoints: string[] = [
-            "/modalities",
+            "/roles",
         ]
 
         fetchData(endpoints)
@@ -23,28 +23,28 @@ const CoursesScreen = () => {
     return(
         <>
             <StyledSection
-                image="https://images.pexels.com/photos/4195504/pexels-photo-4195504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                image="https://images.pexels.com/photos/159844/cellular-education-classroom-159844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             >
                 <MainSectionInfoCard
-                    title="Cursos"
-                    subTitle="Aqui podras crear un curso"
-                    icon={<IoBook/>}
+                    title="Usuarios"
+                    subTitle="Aqui podras ver y registrar usuarios"
+                    icon={<FaUsersCog/>}
                 />
             </StyledSection>
 
             <SectionWrapper>
                 <Title>
-                    Bienvenido a la sección de cursos
+                    Bienvenido a la sección de usuarios
                 </Title>
 
                 <TextCard textAlign="center">
-                    Puede realizar la creacion de un curso a traves del siguiente formulario
+                    Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
                 </TextCard>
-                <CoursesForm modalities={responseData?.modalities || []}/>
+                <UsersForm roles={responseData?.roles || []}/>
             </SectionWrapper>
 
         </>
     )
 }
 
-export { CoursesScreen };
+export { UsersScreen };

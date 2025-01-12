@@ -29,6 +29,7 @@ const handlePostData = async (
       
         const response = await fetch(url, options);
         const data = await response.json();
+        console.log(data);
 
         if(data.Status === "Success") {
             handleNotifications("success", data.message);

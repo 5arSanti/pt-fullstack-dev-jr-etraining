@@ -24,7 +24,7 @@ CREATE TABLE inscription_status (
 );
 
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id INT(11) PRIMARY KEY NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
