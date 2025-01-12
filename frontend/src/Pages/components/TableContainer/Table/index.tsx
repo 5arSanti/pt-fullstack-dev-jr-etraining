@@ -1,11 +1,16 @@
 import { FC } from "react";
 import "./styles.css";
 
+import { MdDelete } from "react-icons/md";
+import { ButtonCard } from "../../ButtonCard";
+import { handleDeleteData } from "../../../../utils/handleData/handleDeleteData";
+
 interface ReactTableProps {
 	data: Array<any>;
+	onDelete: (id: any) => void;
 }
 
-const ReactTable: FC<ReactTableProps> = ({data=[]}) => {
+const ReactTable: FC<ReactTableProps> = ({data=[], onDelete}) => {
 	const columns = data?.length ? Object.keys(data[0]).filter(column => column !== 'Imagen') : [];
 
 	return (
@@ -15,6 +20,8 @@ const ReactTable: FC<ReactTableProps> = ({data=[]}) => {
 					{columns?.map((column, index) => (
 						<th key={index}>{column}</th>
 					))}
+					<th>Eliminar</th>
+
 				</tr>
 			</thead>
 
@@ -24,6 +31,11 @@ const ReactTable: FC<ReactTableProps> = ({data=[]}) => {
 						{columns?.map((column: string, colIndex: number) => (
 							<td key={colIndex}>{row?.[column]}</td>
 						))}
+						<td>
+							<ButtonCard padding={10} title="Eliminar" onClick={() => onDelete({id: row?.id})}>
+								<MdDelete/>
+							</ButtonCard>
+						</td>
 					</tr>
 				))}
 			</tbody>

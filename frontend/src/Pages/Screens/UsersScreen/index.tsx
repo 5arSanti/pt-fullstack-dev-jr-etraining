@@ -7,6 +7,10 @@ import { Title } from "../../components/Title";
 import { FaUsersCog } from "react-icons/fa";
 import { AppContext } from "../../../Context";
 import { UsersForm } from "../../components/ScreenUsers/UsersForm";
+import { TableContainer } from "../../components/TableContainer";
+import { WrapperContainer2 } from "../../components/WrapperContainers";
+import { SubTitle } from "../../components/SubTitle";
+import { handleDeleteData } from "../../../utils/handleData/handleDeleteData";
 
 const UsersScreen = () => {
 
@@ -15,6 +19,7 @@ const UsersScreen = () => {
     React.useEffect(() => {
         const endpoints: string[] = [
             "/roles",
+            "/users",
         ]
 
         fetchData(endpoints)
@@ -36,6 +41,15 @@ const UsersScreen = () => {
                 <Title>
                     Bienvenido a la sección de usuarios
                 </Title>
+
+
+                <WrapperContainer2>
+                    <SubTitle>Lista de usuarios registrados</SubTitle>
+                    <TableContainer 
+                        data={Array.isArray(responseData?.users) ? responseData.users : []}
+                        onDelete={(id) => {handleDeleteData(id, "/users")}}    
+                    />
+                </WrapperContainer2>
 
                 <TextCard textAlign="center">
                     Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
