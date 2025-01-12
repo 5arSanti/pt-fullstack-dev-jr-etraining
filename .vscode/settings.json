@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/65217090-6dd2-436e-bb25-2834fe674671/resourceGroups/prueba-tec-fullstack/providers/Microsoft.Web/sites/pt-fsdj-backend",
+    "appService.deploySubpath": "backend"
+}
