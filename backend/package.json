@@ -1,6 +1,6 @@
 {
   "name": "pt-fullstack-dev-jr-etraining-backend",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "bin/www",
   "scripts": {
     "dev": "nodemon --env-file=app.properties.env bin/www",
