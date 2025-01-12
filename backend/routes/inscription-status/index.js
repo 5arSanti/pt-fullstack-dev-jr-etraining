@@ -20,9 +20,9 @@ router.get("/students", async (request, response) => {
 	try {
 		const studentsByStatus = await getQuery(`
 			SELECT
-				c.name AS curso,
-				i.name AS estado_matricula,
-				COUNT(uc.user_id) AS total_estudiantes
+				c.name AS Curso,
+				i.name AS "Estado de matricula",
+				COUNT(uc.user_id) AS "Total estudiantes"
 
 			FROM user_course uc
 

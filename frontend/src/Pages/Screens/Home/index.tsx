@@ -5,8 +5,28 @@ import { TextCard } from "../../components/TextComponents";
 import { SectionWrapper } from "../../components/SectionWrapper";
 
 import "./styles.css"
+import { SectionTitle } from "../../components/SectionWrapper/SectionTitle";
+import React from "react";
+import { AppContext } from "../../../Context";
+import { TableContainer } from "../../components/TableContainer";
+import { SubTitle } from "../../components/SubTitle";
 
 const Home = () => {
+
+        const { fetchData, responseData } = React.useContext(AppContext)
+    
+        const { studentsByStatus, coursesByModality } = responseData
+
+    React.useEffect(() => {
+        const endpoints: string[] = [
+            "/inscription-status/students",
+            "/modalities/courses"
+        ]
+
+        fetchData(endpoints)
+    }, [])
+
+
     return (
         // <AuthWrapper>
         <>
@@ -21,7 +41,23 @@ const Home = () => {
             </StyledSection>
             
             <SectionWrapper>
-                <TextCard>"</TextCard>
+                <SectionTitle title="Consultas" subTitle="Seccion de"/>
+
+                <SubTitle>Numero de cursos por modalidad</SubTitle>
+                <TableContainer
+                    data={Array.isArray(coursesByModality) ? coursesByModality : []}
+                    onDelete={() => {}}
+                    canDelete={false}
+                />
+
+                <SubTitle>Estudiantes por estado de matricula en cada curso</SubTitle>
+                <TableContainer
+                    data={Array.isArray(studentsByStatus) ? studentsByStatus : []}
+                    onDelete={() => {}}
+                    canDelete={false}
+
+                />
+
             </SectionWrapper>
         </>
         // </AuthWrapper>

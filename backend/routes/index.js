@@ -8,7 +8,7 @@ const modalitiesRouter = require("./modalities/index.js");
 
 const rolesRouter = require("./roles/index.js");
 
-const inscriptionStatusRouter = require("./inscription_status/index.js");
+const inscriptionStatusRouter = require("./inscription-status/index.js");
 
 const coursesRouter = require("./courses/index.js");
 

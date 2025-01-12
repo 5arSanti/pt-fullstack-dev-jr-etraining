@@ -7,10 +7,10 @@ import { FC } from "react";
 interface TableContainerProps {
 	data: Array<any>;
 	onDelete: (id: any) => void;
-
+	canDelete?: boolean;
 }
 
-const TableContainer: FC<TableContainerProps> = ({data, onDelete}) => {
+const TableContainer: FC<TableContainerProps> = ({data, onDelete, canDelete=true}) => {
 	return(
 		<ScrollableWrapper maxHeight={400}>
 			<div className="scroll-wrapper">
@@ -18,6 +18,7 @@ const TableContainer: FC<TableContainerProps> = ({data, onDelete}) => {
 					<ReactTable
 						data={data}
 						onDelete={onDelete}
+						canDelete={canDelete}
 					/>
 				}
 			</div>
