@@ -1,2 +1,4 @@
-# pt-fullstack-dev-jr-etraining
-Repositorio de almacenamiento de la Prueba Tecnica de Desarrollador FullStack Junior.
+# Prueba Tecnica - Full Stack Developer Junior
+###### Esta prueba tecnica fue desarrollada por Johel Santiago Arias Becerra
+
+------------
