@@ -1,0 +1,13 @@
+{
+  "name": "pt-fullstack-dev-jr-etraining",
+  "private": "false",
+  "description": "Source code for the Full Stack Developer Junior Technical Test",
+  "devDependencies": {
+    "husky": "^9.1.6"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "back": "cd backend && npm run dev",
+    "front": "cd frontend && npm run dev"
+  }
+}
