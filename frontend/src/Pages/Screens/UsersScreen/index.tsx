@@ -40,7 +40,7 @@ const UsersScreen = () => {
                 <TextCard textAlign="center">
                     Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
                 </TextCard>
-                <UsersForm roles={responseData?.roles || []}/>
+                <UsersForm roles={Array.isArray(responseData?.roles) ? responseData.roles : []}/>
             </SectionWrapper>
 
         </>

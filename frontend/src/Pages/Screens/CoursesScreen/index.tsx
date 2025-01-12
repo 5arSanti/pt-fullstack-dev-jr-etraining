@@ -40,7 +40,7 @@ const CoursesScreen = () => {
                 <TextCard textAlign="center">
                     Puede realizar la creacion de un curso a traves del siguiente formulario
                 </TextCard>
-                <CoursesForm modalities={responseData?.modalities || []}/>
+                <CoursesForm modalities={Array.isArray(responseData?.modalities) ? responseData.modalities : []}/>
             </SectionWrapper>
 
         </>

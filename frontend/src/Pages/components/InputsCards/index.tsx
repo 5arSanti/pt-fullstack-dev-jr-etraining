@@ -9,7 +9,7 @@ interface InputsProps {
     placeholder: string;
     onChange: (value: any) => void;
     required?: boolean;
-    defaultValue: string | number | null;
+    defaultValue: any;
     className?: string;
     haveLabel?: boolean;
     icon?: React.ReactNode;

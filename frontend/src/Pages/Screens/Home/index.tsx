@@ -1,7 +1,6 @@
 import { IoBook } from "react-icons/io5";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
 import { StyledSection } from "../../components/StyledSection";
-import { Title } from "../../components/Title";
 import { TextCard } from "../../components/TextComponents";
 import { SectionWrapper } from "../../components/SectionWrapper";
 
