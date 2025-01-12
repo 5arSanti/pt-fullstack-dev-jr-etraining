@@ -67,15 +67,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_797D318457A642DC8580C734AC5F27AB }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D179304598E2401A9E6A0B7A190A4EB5 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_629F79A4A9B4424BB037FF70AE971136 }}
+          client-id: ${{ secrets.__clientidsecretname__ }}
+          tenant-id: ${{ secrets.__tenantidsecretname__ }}
+          subscription-id: ${{ secrets.__subscriptionidsecretname__ }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ''
+          app-name: 'pt-fsdj-backend'
           slot-name: 'Production'
           package: .
       
