@@ -1,11 +1,25 @@
+import React from "react";
 import { MainSectionInfoCard } from "../../components/MainSectionInfoCard";
+import { CoursesForm } from "../../components/ScreenCourses/CoursesForm";
 import { SectionWrapper } from "../../components/SectionWrapper";
 import { StyledSection } from "../../components/StyledSection";
 import { TextCard } from "../../components/TextComponents";
 import { Title } from "../../components/Title";
 import { IoBook } from "react-icons/io5";
+import { AppContext } from "../../../Context";
 
 const CoursesScreen = () => {
+
+    const { fetchData, responseData } = React.useContext(AppContext)
+
+    React.useEffect(() => {
+        const endpoints: string[] = [
+            "/modalities",
+        ]
+
+        fetchData(endpoints)
+    }, [])
+
     return(
         <>
             <StyledSection
@@ -26,6 +40,7 @@ const CoursesScreen = () => {
                 <TextCard>
                     Puede realizar la creacion de un curso a traves del siguiente formulario
                 </TextCard>
+                <CoursesForm modalities={responseData?.modalities || []}/>
             </SectionWrapper>
 
         </>

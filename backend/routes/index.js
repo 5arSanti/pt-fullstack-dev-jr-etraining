@@ -1,9 +1,10 @@
 const express = require("express");
 
 
-const authRouter = require("./auth")
 
 const versionRouter = require("./version/index.js");
+
+const modalitiesRouter = require("./modalities/index.js");
 
 
 const routerApi = (app) => {
@@ -13,7 +14,7 @@ const routerApi = (app) => {
 	// Routes
 	router.use("/version", versionRouter);
 
-	// router.use("/auth", authRouter);
+	router.use("/modalities", modalitiesRouter);
 
 }
 

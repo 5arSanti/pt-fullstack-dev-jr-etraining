@@ -9,7 +9,7 @@ interface InputsProps {
     placeholder?: string;
     onChange: (value: any) => void;
     required?: boolean;
-    defaultValue?: string;
+    defaultValue: string | number | null;
     className?: string;
     haveLabel?: boolean;
     icon?: React.ReactNode;
@@ -86,7 +86,7 @@ const OptionInputCard: FC<InputsProps> = ({
                         key={index}
                         value={item?.id || item}
                     >
-                        {item?.Nombre || item}
+                        {item?.name || item}
                     </option>
                 ))}
             </select>
