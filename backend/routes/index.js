@@ -8,6 +8,8 @@ const modalitiesRouter = require("./modalities/index.js");
 
 const rolesRouter = require("./roles/index.js");
 
+const inscriptionStatusRouter = require("./inscription_status/index.js");
+
 const coursesRouter = require("./courses/index.js");
 
 const usersRouter = require("./users/index.js");
@@ -24,6 +26,8 @@ const routerApi = (app) => {
 	router.use("/modalities", modalitiesRouter);
 
 	router.use("/roles", rolesRouter);
+
+	router.use("/inscription-status", inscriptionStatusRouter);
 
 	router.use("/courses", coursesRouter);
 

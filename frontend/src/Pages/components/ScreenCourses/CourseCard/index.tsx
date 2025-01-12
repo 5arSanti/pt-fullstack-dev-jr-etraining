@@ -10,7 +10,7 @@ interface CourseCardProps {
     quota: number
 }
 
-const Coursecard = ({item} : {item: CourseCardProps}) => {
+const CourseCard = ({item} : {item: CourseCardProps}) => {
     return (
         <Link to={`/courses/${item.id}`} title={`Ir al curso de ${item.name}`}>
             <WrapperContainer3 gap={10}>
@@ -31,4 +31,4 @@ const Coursecard = ({item} : {item: CourseCardProps}) => {
     );
 }
 
-export { Coursecard };
+export { CourseCard };

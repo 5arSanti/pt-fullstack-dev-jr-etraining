@@ -16,10 +16,14 @@ const UsersScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext)
 
+    const { roles, users, courses, inscriptionStatus } = responseData
+
     React.useEffect(() => {
         const endpoints: string[] = [
             "/roles",
             "/users",
+            "/courses",
+            "/inscription-status"
         ]
 
         fetchData(endpoints)
@@ -46,7 +50,7 @@ const UsersScreen = () => {
                 <WrapperContainer2>
                     <SubTitle>Lista de usuarios registrados</SubTitle>
                     <TableContainer 
-                        data={Array.isArray(responseData?.users) ? responseData.users : []}
+                        data={Array.isArray(users) ? users : []}
                         onDelete={(item) => {handleDeleteData(item, "/users")}}
                     />
                 </WrapperContainer2>
@@ -54,7 +58,11 @@ const UsersScreen = () => {
                 <TextCard textAlign="center">
                     Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
                 </TextCard>
-                <UsersForm roles={Array.isArray(responseData?.roles) ? responseData.roles : []}/>
+                <UsersForm 
+                    roles={Array.isArray(roles) ? roles : []}
+                    courses={Array.isArray(courses) ? courses : []}
+                    inscriptionStatus={Array.isArray(inscriptionStatus) ? inscriptionStatus : []}
+                />
             </SectionWrapper>
 
         </>

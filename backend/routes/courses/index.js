@@ -8,6 +8,22 @@ router.get("/", async (request, response) => {
 	try {
 		const courses = await getQuery(`
 			SELECT
+				id,
+				name
+			FROM courses
+		`);
+
+		return response.status(200).json({courses: courses});
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+})
+
+router.get("/details", async (request, response) => {
+	try {
+		const coursesDetailed = await getQuery(`
+			SELECT
 				c.id,
 				c.name,
 				m.name AS modality,
@@ -18,7 +34,7 @@ router.get("/", async (request, response) => {
 			JOIN modalities m ON m.id = c.modality_id
 		`);
 
-		return response.status(200).json({courses: courses});
+		return response.status(200).json({coursesDetailed: coursesDetailed});
 	}
 	catch (err) {
 		return response.json({Error: err.message})

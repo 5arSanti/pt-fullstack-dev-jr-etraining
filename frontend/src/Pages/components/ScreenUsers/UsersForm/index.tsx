@@ -7,12 +7,15 @@ import { handlePostData } from "../../../../utils/handleData/handlePostData";
 import { handleInputChange } from "../../../../utils/handleInputChange";
 import { GridContainer } from "../../GridContainer";
 import { ButtonCard } from "../../ButtonCard";
+import { DropCard } from "../../DropCard";
 
 interface CoursesFormProps {
-    roles: any[];
+    roles: Array<object>;
+    courses: Array<{ id: number; name: string }>;
+    inscriptionStatus: Array<{ id: number; name: string }>;
 }
 
-const UsersForm: FC<CoursesFormProps> = ({roles}) => {
+const UsersForm: FC<CoursesFormProps> = ({roles, courses, inscriptionStatus}) => {
     const { setLoading } = React.useContext(AppContext)
 
     const [ values, setValues ] = React.useState({
@@ -22,6 +25,8 @@ const UsersForm: FC<CoursesFormProps> = ({roles}) => {
         email: "",
         phone: "",
         role_id: "",
+        course_id: "",
+        inscription_status_id: ""
     })
 
     const handleSubmit = async (event: FormEvent) => {
@@ -84,6 +89,22 @@ const UsersForm: FC<CoursesFormProps> = ({roles}) => {
                         defaultValue={values?.role_id}
                         none={true}
                         placeholder="Seleccione un rol"
+                    />
+                    <DropCard
+                        title="Seleccione el curso al cual desea incribir al usuario"
+                        array={courses}
+                        onClick={(id: string) => handleInputChange("course_id", id, setValues)}
+                        value={values?.course_id}
+                        searchBox={true}
+                        seeAllOption={true}
+                    />
+                    <DropCard
+                        title="Seleccione el estado de inscripcion del usuario"
+                        array={inscriptionStatus}
+                        onClick={(id: string) => handleInputChange("inscription_status_id", id, setValues)}
+                        value={values?.inscription_status_id}
+                        searchBox={false}
+                        seeAllOption={false}
                     />
 
                 </GridContainer>

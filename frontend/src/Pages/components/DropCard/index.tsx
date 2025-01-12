@@ -11,7 +11,7 @@ import { ScrollableWrapper } from '../ScrollableWrapper';
 
 interface DropCardProps {
     title: string;
-    array: string[];
+    array: { id: number; name: string }[];
     onClick: (value: any) => void;
     value: string;
     searchBox?: boolean;
@@ -22,7 +22,7 @@ const DropCard: React.FC<DropCardProps> = ({title, array=[], onClick, value, sea
 
     const [searchValue, setSearchValue] = React.useState("");
 
-    const filteredArray = searchValue.trim() === '' ? array : array.filter(item => item?.toLocaleLowerCase().includes(searchValue));
+    const filteredArray = searchValue.trim() === '' ? array : array.filter(item => item.name?.toLocaleLowerCase().includes(searchValue));
 
     return (
         <WrapperContainer2 padding={0} flexDirection='column' justifyContent='start' alignItems='start' gap={10}>
@@ -32,7 +32,7 @@ const DropCard: React.FC<DropCardProps> = ({title, array=[], onClick, value, sea
                 <Dropdown.Toggle id="dropdown-card-basic" className='dropdown-card-button'>
                     {(value == "" || !value) && "Todo" || 
                     <>
-                        {""} {value}
+                        {array.find(item => item.id === Number(value))?.name}
                     </>
                     }
                 </Dropdown.Toggle>
@@ -58,15 +58,13 @@ const DropCard: React.FC<DropCardProps> = ({title, array=[], onClick, value, sea
                                 <TextCard>Todo</TextCard>
                             </Dropdown.Item>
                         }
-                        {filteredArray?.map((item: number | string, index: number) => (
+                        {filteredArray?.map((item: { name: string, id: number }, index: number) => (
                             <Dropdown.Item key={index} onClick={() => {
-                                    onClick(item)
+                                    onClick(item.id)
                                     setSearchValue("");
                                 }}>
                                     <TextCard>
-                                        {item == 1 && "Si" || 
-                                        item == 0 && "No" || 
-                                        item}
+                                        {item.name}
                                     </TextCard>
                             </Dropdown.Item>
                         ))}

@@ -10,7 +10,7 @@ import { AppContext } from "../../../Context";
 import { WrapperContainer2 } from "../../components/WrapperContainers";
 import { SubTitle } from "../../components/SubTitle";
 import { GridContainer } from "../../components/GridContainer";
-import { Coursecard } from "../../components/ScreenCourses/CourseCard";
+import { CourseCard } from "../../components/ScreenCourses/CourseCard";
 
 
 
@@ -19,12 +19,12 @@ const CoursesScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext)
 
-    const { modalities, courses } = responseData;
+    const { modalities, coursesDetailed } = responseData;
 
     React.useEffect(() => {
         const endpoints: string[] = [
             "/modalities",
-            "/courses"
+            "/courses/details"
         ]
 
         fetchData(endpoints)
@@ -50,8 +50,8 @@ const CoursesScreen = () => {
                 <WrapperContainer2>
                     <SubTitle>Lista de cursos existentes</SubTitle>
                     <GridContainer className="grid-1-1" padding={0}>
-                        { Array.isArray(courses) && courses.map((item, index: number) => (
-                            <Coursecard item={item} key={index}/>
+                        { Array.isArray(coursesDetailed) && coursesDetailed.map((item, index: number) => (
+                            <CourseCard item={item} key={index}/>
                         ))}
                     </GridContainer>
                 </WrapperContainer2>
