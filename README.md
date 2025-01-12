@@ -5,12 +5,21 @@
 Para visualizar el despliegue en produccion de la prueba tecnica, puede dirigirse a la siguiente url
 
 > [Despliegue en Produccion](https://5arsanti.github.io/pt-fullstack-dev-jr-etraining "Despliegue en Produccion")
+    
+
+O traves de este enlace
+
+    https://5arsanti.github.io/pt-fullstack-dev-jr-etraining
 
 ------------
-Para ejecutar el proyecto de forma local, simulando el despliegue en produccion, utilice docker. Por lo tanto, puede ejecutar el siguiente comando en la carpeta raiz del proyecto
+Para ejecutar el proyecto de forma local, simulando el despliegue en produccion, utilicé docker. Por lo tanto, puede ejecutar el siguiente comando en la carpeta raiz del proyecto
 
     docker-compose up --build
 
+
+Y puede visualizar el proyecto a traves de la siguiente url
+
+    http://localhost:5174/
 ------------
 
 ### Puntos de la Prueba Tecnica
