@@ -46,7 +46,7 @@ return(
 
 const WrapperContainer2: React.FC<WrappersTypes> = ({
         children, 
-        flexDirection = "row", 
+        flexDirection = "column", 
         padding = 20, 
         paddingVertical=null, 
         gap = 15, 

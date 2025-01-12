@@ -19,6 +19,7 @@ import { ToastContainer } from "react-toastify";
 import { scrollToValue } from "../../utils/scrollToValue.ts";
 import { LoadingCard } from "../components/LoadingCard/index.tsx";
 import { AppRoutes } from "../Routes/index.tsx";
+import { Header } from "../components/Header/index.tsx";
 
 const Wrapper = ({ children } : { children: ReactNode}) => {
     const location = useLocation();
@@ -34,7 +35,8 @@ const App = () => {
     return (
         <AppProvider>
             <HashRouter>
-                <Wrapper>                    
+                <Wrapper>
+                    <Header/>      
                     <LoadingCard/>
 
                     <AppRoutes/>

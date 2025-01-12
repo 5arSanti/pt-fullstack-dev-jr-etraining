@@ -1,19 +1,19 @@
 :root{
     --navbar-color: transparent;
-    --footer-color:  #918ef4;
+    --footer-color:  #10002b;
 
-    --main-body-color: #EEFAFF;
-    --main-title-color: #141b41;
+    --main-body-color: #E6EFFD;
+    --main-title-color: #e0aaff;
 
-    --lines-color: #918ef4;
-    --lines-color2: #dee7e7;
+    --lines-color: #c77dff;
+    --lines-color2: #240046;
 
-    --pallete-1: #98b9f2;
-    --pallete-2: #141b41;
-    --pallete-3: #918ef4;
-    --pallete-4: #eaf1ff;
-    --pallete-5: #becfec;
-    --pallete-6: #141b41ab;
+    --pallete-1: #c77dff;
+    --pallete-2: #EB3678;
+    --pallete-3: #e0aaff;
+    --pallete-4: rgba(36, 0, 70, 0.6);
+    --pallete-5: rgba(235, 54, 120, 0.1);
+    --pallete-6: #efd3ff;
 
     --text-color: #717171;
     --all-info-container-color: #E6EFFD;
@@ -49,7 +49,6 @@ p, span, div, h2, h1 {
 
 body {
     margin: 0;
-    padding: var(--navbar-height) 0 0 0;
     font-family: "Roboto" !important;
     font-weight: 100;
     font-style: normal;
