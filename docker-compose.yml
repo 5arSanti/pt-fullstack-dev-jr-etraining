@@ -1,0 +1,58 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ContactosDB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    environment:
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_DATABASE=ContactosDB
+      - DB_SERVER=mysql
+      - DB_PORT=3306
+      - PORT=3080
+      - API_STRUCTURE=api
+      - LOGIN_TOKEN=mYtoKenForSceEvLogin_$
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
+    ports:
+      - "4080:3080"
+    depends_on:
+      - mysql
+    networks:
+      - mynetwork
+
+  frontend:
+    build: ./frontend
+    container_name: frontend-container
+    environment:
+      - DB_USER=user
+      - VITE_API_STRUCTURE=api
+      - VITE_API_DOMAIN=http://localhost:4080
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
