@@ -11,6 +11,7 @@ import { WrapperContainer2 } from "../../components/WrapperContainers";
 import { SubTitle } from "../../components/SubTitle";
 import { GridContainer } from "../../components/GridContainer";
 import { CourseCard } from "../../components/ScreenCourses/CourseCard";
+import { VerifyLength } from "../../components/VerifyLengthWrapper";
 
 
 
@@ -37,29 +38,34 @@ const CoursesScreen = () => {
             >
                 <MainSectionInfoCard
                     title="Cursos"
-                    subTitle="Aqui podras crear un curso"
+                    subTitle="Creacion y detalles de los cursos"
                     icon={<IoBook/>}
                 />
             </StyledSection>
 
             <SectionWrapper>
-                <Title>
-                    Bienvenido a la sección de cursos
-                </Title>
+                <WrapperContainer2 gap={40} padding={0}>
+                    <Title>
+                        Bienvenido a la sección de cursos
+                    </Title>
 
-                <WrapperContainer2>
-                    <SubTitle>Lista de cursos existentes</SubTitle>
-                    <GridContainer className="grid-1-1" padding={0}>
-                        { Array.isArray(coursesDetailed) && coursesDetailed.map((item, index: number) => (
-                            <CourseCard item={item} key={index}/>
-                        ))}
-                    </GridContainer>
+                    <WrapperContainer2 padding={0}>
+                        <SubTitle>Lista de cursos existentes</SubTitle>
+                        <VerifyLength array={Array.isArray(coursesDetailed) ? coursesDetailed : []}>
+                            <GridContainer className="grid-1-1" padding={0}>
+                                { Array.isArray(coursesDetailed) && coursesDetailed.map((item, index: number) => (
+                                    <CourseCard item={item} key={index}/>
+                                ))}
+                            </GridContainer>
+                        </VerifyLength>
+                    </WrapperContainer2>
+
+                    <SubTitle>Crear un nuevo curso</SubTitle>
+                    <TextCard textAlign="center">
+                        Puede realizar la creacion de un curso a traves del siguiente formulario
+                    </TextCard>
+                    <CoursesForm modalities={Array.isArray(modalities) ? modalities : []}/>
                 </WrapperContainer2>
-
-                <TextCard textAlign="center">
-                    Puede realizar la creacion de un curso a traves del siguiente formulario
-                </TextCard>
-                <CoursesForm modalities={Array.isArray(modalities) ? modalities : []}/>
             </SectionWrapper>
 
         </>

@@ -1,35 +1,32 @@
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: pt-fsdj-mysql-container
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: PT_FSDJ
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    volumes:
-      - ./database-init:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql
-    network_mode: host
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: pt-fsdj-mysql-container
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: PT_FSDJ
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #   volumes:
+  #     - ./database-init:/docker-entrypoint-initdb.d
+  #     - mysql-data:/var/lib/mysql
+  #   network_mode: host
 
   backend:
     build: ./backend
     container_name: pt-fsdj-backend-container
     environment:
-      - DB_USER=user
-      - DB_PASSWORD=password
+      - DB_USER=prueba_tec_admin
+      - DB_PASSWORD=pt_fsdj_1$
       - DB_DATABASE=PT_FSDJ
-      - DB_SERVER=mysql
+      - DB_SERVER=prueba-tec-fullstack-server.mysql.database.azure.com
       - DB_PORT=
       - PORT=3080
       - API_STRUCTURE=api
       - LOGIN_TOKEN=mYtoKenForSPtLvLogin_$
-    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
     ports:
       - "4080:3080"
-    depends_on:
-      - mysql
     networks:
       - mynetwork
 

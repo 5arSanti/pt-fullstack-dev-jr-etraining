@@ -29,16 +29,12 @@ router.get("/details", async (request, response) => {
 				m.name AS modality,
 				c.duration,
 				c.quota,
-				COUNT(DISTINCT uc.user_id) AS total
+				COUNT(uc.user_id) AS total
 
 			FROM courses c
 
 			JOIN modalities m ON m.id = c.modality_id
 			LEFT JOIN user_course uc ON uc.course_id = c.id
-			LEFT JOIN users u ON uc.user_id = u.id
-			LEFT JOIN roles r ON u.role_id = r.id
-
-			WHERE r.name = 'Estudiante' OR r.name IS NULL
 
 			GROUP BY c.id, c.name, m.name, c.duration, c.quota
 			ORDER BY c.name;
