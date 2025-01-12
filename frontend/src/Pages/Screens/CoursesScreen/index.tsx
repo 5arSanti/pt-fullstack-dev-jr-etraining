@@ -7,14 +7,24 @@ import { TextCard } from "../../components/TextComponents";
 import { Title } from "../../components/Title";
 import { IoBook } from "react-icons/io5";
 import { AppContext } from "../../../Context";
+import { WrapperContainer2 } from "../../components/WrapperContainers";
+import { SubTitle } from "../../components/SubTitle";
+import { GridContainer } from "../../components/GridContainer";
+import { Coursecard } from "../../components/ScreenCourses/CourseCard";
+
+
+
 
 const CoursesScreen = () => {
 
     const { fetchData, responseData } = React.useContext(AppContext)
 
+    const { modalities, courses } = responseData;
+
     React.useEffect(() => {
         const endpoints: string[] = [
             "/modalities",
+            "/courses"
         ]
 
         fetchData(endpoints)
@@ -37,10 +47,19 @@ const CoursesScreen = () => {
                     Bienvenido a la sección de cursos
                 </Title>
 
+                <WrapperContainer2>
+                    <SubTitle>Lista de cursos existentes</SubTitle>
+                    <GridContainer className="grid-1-1" padding={0}>
+                        { Array.isArray(courses) && courses.map((item, index: number) => (
+                            <Coursecard item={item} key={index}/>
+                        ))}
+                    </GridContainer>
+                </WrapperContainer2>
+
                 <TextCard textAlign="center">
                     Puede realizar la creacion de un curso a traves del siguiente formulario
                 </TextCard>
-                <CoursesForm modalities={Array.isArray(responseData?.modalities) ? responseData.modalities : []}/>
+                <CoursesForm modalities={Array.isArray(modalities) ? modalities : []}/>
             </SectionWrapper>
 
         </>

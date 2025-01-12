@@ -4,6 +4,27 @@ const { validateObjectValues } = require("../../Utils/Validate/validateObjectVal
 
 const router = express.Router();
 
+router.get("/", async (request, response) => {
+	try {
+		const courses = await getQuery(`
+			SELECT
+				c.id,
+				c.name,
+				m.name AS modality,
+				c.duration,
+				c.quota
+			FROM courses c
+
+			JOIN modalities m ON m.id = c.modality_id
+		`);
+
+		return response.status(200).json({courses: courses});
+	}
+	catch (err) {
+		return response.json({Error: err.message})
+	}
+})
+
 router.post("/", async (request, response) => {
 	try {
 		validateObjectValues(request.body);

@@ -17,7 +17,7 @@ interface WrappersTypes {
 
 const WrapperContainer1: React.FC<WrappersTypes> = ({
     children, 
-    flexDirection = "row", 
+    flexDirection = "column", 
     padding = 20, 
     paddingVertical=null, 
     gap = 15, 
@@ -75,7 +75,7 @@ const WrapperContainer2: React.FC<WrappersTypes> = ({
 
 const WrapperContainer3: React.FC<WrappersTypes> = ({
     children, 
-    flexDirection = "row", 
+    flexDirection = "column", 
     padding = 20, 
     paddingVertical=null, 
     gap = 15, 

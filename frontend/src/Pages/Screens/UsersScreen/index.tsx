@@ -47,7 +47,7 @@ const UsersScreen = () => {
                     <SubTitle>Lista de usuarios registrados</SubTitle>
                     <TableContainer 
                         data={Array.isArray(responseData?.users) ? responseData.users : []}
-                        onDelete={(id) => {handleDeleteData(id, "/users")}}    
+                        onDelete={(item) => {handleDeleteData(item, "/users")}}
                     />
                 </WrapperContainer2>
 

@@ -7,7 +7,7 @@ import { handleDeleteData } from "../../../../utils/handleData/handleDeleteData"
 
 interface ReactTableProps {
 	data: Array<any>;
-	onDelete: (id: any) => void;
+	onDelete: (item: object) => void;
 }
 
 const ReactTable: FC<ReactTableProps> = ({data=[], onDelete}) => {
@@ -32,7 +32,7 @@ const ReactTable: FC<ReactTableProps> = ({data=[], onDelete}) => {
 							<td key={colIndex}>{row?.[column]}</td>
 						))}
 						<td>
-							<ButtonCard padding={10} title="Eliminar" onClick={() => onDelete({id: row?.id})}>
+							<ButtonCard padding={10} title="Eliminar" onClick={() => onDelete(row)}>
 								<MdDelete/>
 							</ButtonCard>
 						</td>
