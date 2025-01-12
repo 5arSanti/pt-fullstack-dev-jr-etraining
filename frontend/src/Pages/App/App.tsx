@@ -20,6 +20,7 @@ import { scrollToValue } from "../../utils/scrollToValue.ts";
 import { LoadingCard } from "../components/LoadingCard/index.tsx";
 import { AppRoutes } from "../Routes/index.tsx";
 import { Header } from "../components/Header/index.tsx";
+import { Footer, SecondFooter } from "../components/Footer/index.tsx";
 
 const Wrapper = ({ children } : { children: ReactNode}) => {
     const location = useLocation();
@@ -40,6 +41,8 @@ const App = () => {
                     <LoadingCard/>
 
                     <AppRoutes/>
+                    
+                    <SecondFooter/>
 
                     <ToastContainer/>
                 </Wrapper>

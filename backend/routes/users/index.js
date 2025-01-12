@@ -70,6 +70,11 @@ router.delete("/", async (request, response) => {
 		const { id } = request.body;
 
 		await getQuery(`
+            DELETE FROM user_course
+            WHERE user_id = ${id}
+        `);
+
+		await getQuery(`
 			DELETE FROM users
 			WHERE id = ${id}
 		`);

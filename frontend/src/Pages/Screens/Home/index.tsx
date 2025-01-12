@@ -10,6 +10,8 @@ import React from "react";
 import { AppContext } from "../../../Context";
 import { TableContainer } from "../../components/TableContainer";
 import { SubTitle } from "../../components/SubTitle";
+import { VerifyLength } from "../../components/VerifyLengthWrapper";
+import { WrapperContainer2 } from "../../components/WrapperContainers";
 
 const Home = () => {
 
@@ -43,22 +45,30 @@ const Home = () => {
             <SectionWrapper>
                 <SectionTitle title="Consultas" subTitle="Seccion de"/>
 
-                <SubTitle>Numero de cursos por modalidad</SubTitle>
-                <TextCard textAlign="start">Aca se pueden observar el numero de cursos por modalidad</TextCard>
-                <TableContainer
-                    data={Array.isArray(coursesByModality) ? coursesByModality : []}
-                    onDelete={() => {}}
-                    canDelete={false}
-                />
+                <WrapperContainer2 gap={30} padding={0}>
+                    <SubTitle>Numero de cursos por modalidad</SubTitle>
+                    <TextCard textAlign="start">Aca se pueden observar el numero de cursos por modalidad</TextCard>
+                    <VerifyLength array={Array.isArray(coursesByModality) ? coursesByModality : []}>
+                        <TableContainer
+                            data={Array.isArray(coursesByModality) ? coursesByModality : []}
+                            onDelete={() => {}}
+                            canDelete={false}
+                        />
+                    </VerifyLength>
 
-                <SubTitle>Estudiantes por estado de matricula en cada curso</SubTitle>
-                <TextCard textAlign="start">Aca se pueden observar el numero total de <strong>estudiantes</strong> por estado de matricula y ordenados por curso</TextCard>
-                <TableContainer
-                    data={Array.isArray(studentsByStatus) ? studentsByStatus : []}
-                    onDelete={() => {}}
-                    canDelete={false}
 
-                />
+                    <SubTitle>Estudiantes por estado de matricula en cada curso</SubTitle>
+                    <TextCard textAlign="start">Aca se pueden observar el numero total de <strong>estudiantes</strong> por estado de matricula y ordenados por curso</TextCard>
+                    <VerifyLength array={Array.isArray(studentsByStatus) ? studentsByStatus : []}>
+                        <TableContainer
+                            data={Array.isArray(studentsByStatus) ? studentsByStatus : []}
+                            onDelete={() => {}}
+                            canDelete={false}
+
+                        />
+                    </VerifyLength>
+                </WrapperContainer2>
+
 
             </SectionWrapper>
         </>

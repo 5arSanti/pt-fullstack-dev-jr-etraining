@@ -38,7 +38,7 @@ const CourseCard = ({item} : {item: CourseCardProps}) => {
                 Duracion del curso: {item.duration} horas
             </TextCard>
             <TextCard>Cuota del curso: {item.quota} estudiantes</TextCard>
-            <TextCard>Estudiantes inscritos: {item.total}</TextCard>
+            <TextCard>Usuarios inscritos: {item.total}</TextCard>
 
             
         </WrapperContainer3>

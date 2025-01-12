@@ -11,6 +11,7 @@ import { TableContainer } from "../../components/TableContainer";
 import { WrapperContainer2 } from "../../components/WrapperContainers";
 import { SubTitle } from "../../components/SubTitle";
 import { handleDeleteData } from "../../../utils/handleData/handleDeleteData";
+import { VerifyLength } from "../../components/VerifyLengthWrapper";
 
 const UsersScreen = () => {
 
@@ -42,27 +43,32 @@ const UsersScreen = () => {
             </StyledSection>
 
             <SectionWrapper>
-                <Title>
-                    Bienvenido a la sección de usuarios
-                </Title>
+                <WrapperContainer2 gap={40} padding={0}>
+                    <Title>
+                        Bienvenido a la sección de usuarios
+                    </Title>
 
 
-                <WrapperContainer2>
-                    <SubTitle>Lista de usuarios registrados</SubTitle>
-                    <TableContainer 
-                        data={Array.isArray(users) ? users : []}
-                        onDelete={(item) => {handleDeleteData(item, "/users")}}
+                    <WrapperContainer2>
+                        <SubTitle>Lista de usuarios registrados</SubTitle>
+                        <VerifyLength array={Array.isArray(users) ? users : []}>
+                            <TableContainer 
+                                data={Array.isArray(users) ? users : []}
+                                onDelete={(item) => {handleDeleteData(item, "/users")}}
+                            />
+                        </VerifyLength>
+                    </WrapperContainer2>
+
+
+                    <TextCard textAlign="center">
+                        Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
+                    </TextCard>
+                    <UsersForm 
+                        roles={Array.isArray(roles) ? roles : []}
+                        courses={Array.isArray(courses) ? courses : []}
+                        inscriptionStatus={Array.isArray(inscriptionStatus) ? inscriptionStatus : []}
                     />
                 </WrapperContainer2>
-
-                <TextCard textAlign="center">
-                    Puede realizar el registro de un nuevo usuario a traves del siguiente formulario
-                </TextCard>
-                <UsersForm 
-                    roles={Array.isArray(roles) ? roles : []}
-                    courses={Array.isArray(courses) ? courses : []}
-                    inscriptionStatus={Array.isArray(inscriptionStatus) ? inscriptionStatus : []}
-                />
             </SectionWrapper>
 
         </>
